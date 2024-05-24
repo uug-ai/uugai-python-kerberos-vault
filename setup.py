@@ -4,9 +4,9 @@ with open('requirements.txt') as f:
     requirements = f.read().splitlines()
 
 setup(
-   name='python_kerberos_vault_integrator',
+   name='uugai_python_kerberos_vault',
    version='1.0.0',
-   description='Queue reader with integrated kerberos vault support', 
+   description='Kerberos Vault Python library for interacting with the Kerberos Vault.', 
    author='uug.ai',
    author_email='support@uug.ai',
    long_description=open('README.md').read(),

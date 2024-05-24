@@ -1,6 +1,10 @@
-class KerberosVaultIntegrator:
+import traceback
+import requests
+
+class KerberosVault:
     """A class for connecting with the Kerberos Vault.
     """
+
 
     def __init__(self, storage_uri, storage_access_key, storage_secret_key):
         """ Initializes the QueueProcessor object with necessary attributes.
@@ -21,7 +25,6 @@ class KerberosVaultIntegrator:
         self.storage_secret_key = storage_secret_key
 
 
-
     def update_storage_info(self, data):
         """ Updates storage-related information based on data received from message payloads.
 
@@ -38,7 +41,6 @@ class KerberosVaultIntegrator:
             self.storage_access_key = data['storage_access_key']
         if "storage_secret" in data and data['storage_secret'] != "":
             self.storage_secret = data['storage_secret']
-
 
 
     def create_headers(self, file_name, storage_provider):
@@ -62,3 +64,51 @@ class KerberosVaultIntegrator:
         }
 
         return self.headers
+    
+
+    def retrieve_media(self, message: str, media_type: str = '', media_savepath: str = ''):
+        """ Fetches associated data from storage, and performs actions.
+
+        Parameters:
+        -----------
+        message : str
+            The message to be processed.
+        media_type : str
+            The type of message to be processed (image, video). Default is an empty string.
+            if type is 'video', the message is processed and video file is created. Filepath is returned.
+            else, the message response is returned.
+        media_savepath : str
+            The path where the media file is to be saved. Default is an empty string.
+
+        """
+
+        # Update storage-related information if available in message payload
+        if "data" in message:
+            self.update_storage_info(message['data'])
+
+        # Create headers for accessing storage service
+        headers = self.create_headers(message['payload']['key'], message['source'])
+
+        try:
+            # Fetch data associated with the message from storage service
+            resp = requests.get(self.storage_uri + "/storage/blob", headers=headers, timeout=10)
+
+            if resp is None or resp.status_code != 200:
+                return requests.exceptions.RequestException('Failed to fetch data from storage')
+
+            elif media_type == 'image':
+                return NotImplementedError('media_type == image, needs to be implemented')
+
+            elif media_type == 'video':
+                # From the received requested data, reconstruct a video-file.
+                # This creates a video-file in the data folder, containing the recording.
+                with open(media_savepath, 'wb') as output:
+                    output.write(resp.content)
+                
+            return resp
+            
+        except Exception as x:
+            print('Error occurred while trying to fetch data from storage:')
+            print(x)
+            traceback.print_exc()
+            pass
