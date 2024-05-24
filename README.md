@@ -3,10 +3,10 @@
 Python Kerberos Vault is a package that provides seamless integration between Python applications and the Kerberos Vault. It simplifies the process of receiving messages or videos from the Kerberos Vault.
 
 ## Installation
-To get started with Python Kerberos Vault, simply install the package using pip and follow the provided documentation for configuration and usage instructions: `pip install python_kerberos_vault`
+To get started with Python Kerberos Vault, simply install the package using pip and follow the provided documentation for configuration and usage instructions: `pip install uugai_python_kerberos_vault`
 
 To import the `KerberosVault` class into your Python file, use the following import statement:
-`from python_kerberos_vault import KerberosVault`
+`from uugai_python_kerberos_vault import KerberosVault`
 
 ## Message object architecture
 The message architecture should match this architecture:
@@ -69,8 +69,8 @@ The function returns a dictionary containing the headers to be used in the API r
 The code snippet provided demonstrates the usage of the KerberosVault library in Python. It showcases how to initialize a connection and retrieve a media object from the Kerberos Vault. 
 
 ```Python
-from MessageBrokers import RabbitMQ
-from KerberosVault import KerberosVault
+from uugai_python_dynamic_queue.MessageBrokers import RabbitMQ
+from uugai_python_kerberos_vault.KerberosVault import KerberosVault
 
 # Initialize a message broker using the python_queue_reader package
 rabbitmq = RabbitMQ(queue_name='queue_name_example', 
