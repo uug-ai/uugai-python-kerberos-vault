@@ -11,7 +11,7 @@ To import the `KerberosVault` class into your Python file, use the following imp
 ## Message object architecture
 The message architecture should match this architecture:
 
-```JSON
+```
 {'source': 'your_storage_provider', 
  'payload': {'key': 'file_name', 'additional_info: '...'},
  'data': {storage_uri: 'kerberos_vault_uri' , storage_access_key: 'access_key' , storage_secret: 'secret_key'}
