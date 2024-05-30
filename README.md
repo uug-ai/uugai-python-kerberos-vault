@@ -3,10 +3,9 @@
 Python Kerberos Vault is a package that provides seamless integration between Python applications and the Kerberos Vault. It simplifies the process of receiving messages or videos from the Kerberos Vault.
 
 ## Installation
-To get started with Python Kerberos Vault, simply install the package using pip and follow the provided documentation for configuration and usage instructions: `pip install uugai_python_kerberos_vault`
-
-To import the `KerberosVault` class into your Python file, use the following import statement:
-`from uugai_python_kerberos_vault import KerberosVault`
+To get started with Python Kerberos Vault, simply install the package using pip and follow the provided documentation for configuration and usage instructions. The package can be found on [PyPi](https://pypi.org/project/uugai-python-kerberos-vault/). Thereafter, the `KerberosVault` class can be imported into your Python file.
+* Install using pip: `pip install uugai_python_kerberos_vault`
+* Import in your python file: `from uugai_python_kerberos_vault.KerberosVault import KerberosVault`
 
 ## Message object architecture
 The message architecture should match this architecture:

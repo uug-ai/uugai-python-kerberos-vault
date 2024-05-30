@@ -1,1 +1,5 @@
 .venv
+build
+dist 
+uugai_python_kerberos_vault.egg-info
+uugai_python_kerberos_vault/__pycache__

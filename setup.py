@@ -5,7 +5,7 @@ with open('requirements.txt') as f:
 
 setup(
    name='uugai_python_kerberos_vault',
-   version='1.0.0',
+   version='1.2.0',
    description='Kerberos Vault Python library for interacting with the Kerberos Vault.', 
    author='uug.ai',
    author_email='support@uug.ai',
